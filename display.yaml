@@ -1,0 +1,78 @@
+  
+  tile: display
+  display-type: "rgb" or "lvds" or "vga" or "hdmi" or "tvout" or edp #out
+  pclk: 25175000 #clock-frequency
+  hdisplay: 640 #display horizontal active area
+  vdisplay: 480 #display vertical active area
+  h-back-porch: 40 #back forch in pixels
+  h-front-porch: 24 #front porch in pixels
+  v-back-porch: 32 #back forch in lines
+  v-front-porch: 11  #front porch in lines
+  h-sync-width: 96 #horizontal sync width
+  v-sync-width: 2  #vertical sync width
+  oep: 1 #display active
+  h-sync-polarity: 0 ##hsync-active = <0>; == hsp
+  v-sync-polarity: 0 #vsync-active = <0>; == vsp
+  pixel-clk-active: 0 #pixelclk-active = <0>; == pcp
+  data-mapping: "jeida-24"; "bgr666"; "rgb24"; "vesa-24"; "bgr565" support? #ldds
+  #width-mm: 116 optional, yet to find use of this
+  #height-mm: 86 maybe optional, yet to find use of this 
+  ##bpp, what is equivalent in Linux?
+  hot-plug-detect-apio: gpio number, state  # gpio or sodimm or mxm3 number should we use?
+  hot-plug-detect-active-state: state
+  
+  {
+  #bl_gpio  #Backlight pin and PWM
+  #bl_pol
+  #disp_gpio
+  #disp_pol
+
+  pwms = <&pwm3 0 5000000>;
+  enable-gpios = <&gpio3 26 GPIO_ACTIVE_HIGH>; /* Colibri BL_ON */
+  default-brightness-level = <1>;
+  }
+  
+  /home/raja/torizon/device-tree/linux-toradex/arch/arm/boot/dts/imx51-babbage.dtsispondelay
+
+  #edidslaveaddr #it seems like the chip address for EDID is always 0x50, what about I2c channel?
+  #dispoffdelay
+  #usespalshsettings
+  #FirstRefreshDelay
+  #Cursor 
+  #Angle
+  #multipleoutputs
+
+
+#HDMIAudio?
+
+{
+#Drive strength, slew rate, speed settings
+https://developer.toradex.com/device-tree-customization#pinmux-imx6
+#lcdbs
+}
+
+#BootupAngle
+
+#HDMI CEC
+
+https://developer.toradex.com/knowledge-base/display-output-resolution-and-timings-linux
+
+#gpio-216 (LVDS: Single/Dual Ch) out lo
+#gpio-219 (LVDS: 18/24 Bit Mode) out hi
+#gpio-220 (LVDS: Output Enable ) out hi
+#gpio-221 (LVDS: Power Down    ) out hi
+#gpio-222 (LVDS: Clock Polarity) out hi
+#gpio-223 (LVDS: Colour Mapping) out hi
+#gpio-225 (LVDS: Swing Mode    ) out hi
+#gpio-226 (LVDS: DDRclk Disable) out hi
+
+/home/raja/torizon/device-tree/linux-toradex/Documentation/devicetree/bindings/display/panel/samsung,s6e8aa0.txt
+#reset-gpios = <&gpy4 5 0>;
+#power-on-delay= <50>;
+#reset-delay = <100>;
+#init-delay = <100>;
+#flip-horizontal;
+#flip-vertical;
+    
+/home/raja/torizon/device-tree/linux-toradex/arch/arm/boot/dts/imx51-babbage.dts    
+    interface-pix-fmt = "rgb565"; ?

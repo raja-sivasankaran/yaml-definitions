@@ -1,0 +1,18 @@
+
+tile: rs-485
+uart-number: number
+rts-delay-start: number ms
+rts-delay-end: number ms
+rts-active: 0 or 1 
+
+
+# fragment@0 {
+#     target = <&uart2>;
+# __overlay__ {
+#     status = "okay";
+#     linux,rs485-enabled-at-boot-time;
+#     rs485-rts-delay = <0 200>;
+#     rs485-rts-active-low;
+#     rs485-rx-during-tx;
+#     };
+# };
